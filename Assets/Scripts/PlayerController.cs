@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.talking) // Can't move or fire during dialogue
+        if (!GameManager.instance.IsFrozen()) // Can't move or fire during dialogue
         {
             Vector2 movementVector = GetMovementVector();
             movementVector *= moveSpeed;
