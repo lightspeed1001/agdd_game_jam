@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private void RegisterEvents()
     {
-        Damageable.OnDamageTaken += OnDamageTaken;
-        Damageable.OnDeath       += OnDeath;
+        damageableComponent.OnDamageTaken += OnDamageTaken;
+        damageableComponent.OnDeath       += OnDeath;
     }
 
     // Update is called once per frame
@@ -73,5 +73,15 @@ public class PlayerController : MonoBehaviour
     private void OnDamageTaken()
     {
         // Player took damage, do something?
+    }
+
+    /// <summary>
+    /// This function is called when the MonoBehaviour will be destroyed.
+    /// </summary>
+    void OnDestroy()
+    {
+        // For the love of god remember to unsubscribe from events
+        damageableComponent.OnDeath -= OnDeath;
+        damageableComponent.OnDamageTaken -= OnDamageTaken;
     }
 }

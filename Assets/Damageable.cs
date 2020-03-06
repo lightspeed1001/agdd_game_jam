@@ -9,8 +9,9 @@ public class Damageable : MonoBehaviour
     public int maxArmor;
     public int maxShield;
     
-    public static event Action OnDeath;
-    public static event Action OnDamageTaken;
+    public event Action OnDeath;
+    public event Action OnDamageTaken;
+    public static Action LiterallyAnythingDied;
 
     private int health, armor, shield;
 
@@ -50,6 +51,7 @@ public class Damageable : MonoBehaviour
         if(health <= 0)
         {
             OnDeath.Invoke();
+            LiterallyAnythingDied.Invoke();
         }
     }
 }
