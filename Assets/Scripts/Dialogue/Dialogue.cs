@@ -1,14 +1,21 @@
 ﻿public class Dialogue
 {
+    string talker;
     string dialogue;
     string[] choices;
     Dialogue[] consequences;
     
-    public Dialogue(string text, string[] options, Dialogue[] links)
+    public Dialogue(string person, string text, string[] options, Dialogue[] links)
     {
+        talker = person;
         dialogue = text;
         choices = options;
         consequences = links;
+    }
+
+    public string GetPerson()
+    {
+        return talker;
     }
 
     public string GetText()
