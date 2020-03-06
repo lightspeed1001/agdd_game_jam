@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public bool talking = false;
+    public bool paused = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -17,5 +18,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public bool IsFrozen()
+    {
+        return paused || talking;
     }
 }
