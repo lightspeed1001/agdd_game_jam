@@ -20,4 +20,9 @@
     {
         return choices;
     }
+
+    public Dialogue MakeChoice(int index)
+    {
+        return consequences[index];
+    }
 }
