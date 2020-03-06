@@ -41,12 +41,16 @@ public class PlayerController : MonoBehaviour
             movementVector *= moveSpeed;
             rb.velocity = movementVector;
             
+            // TODO update player facing
+
             timeSinceLastShot += Time.deltaTime;
             if (IsFiring() &&  timeSinceLastShot >= timeBetweenShots)
             {
                 timeSinceLastShot = 0.0f;
                 Debug.Log("Donkey!");
                 // Shooty mechanics here.
+                // TODO Fire in the direction the player is facing using a raycast probably
+                // If the player hit something, try to get the damageable component and damage it
             }
         }
     }
@@ -58,6 +62,19 @@ public class PlayerController : MonoBehaviour
         move.y = Input.GetAxisRaw("Vertical");
         
         return Vector2.ClampMagnitude(move, 1);
+    }
+
+    private Vector2 GetFacingVector()
+    {
+        if(usingGamepad)
+        {
+            // TODO Make an input axis for this when using a controller
+        }
+        else
+        {
+            // TODO Get mouse position and update facing from that
+        }
+        return Vector2.zero;
     }
 
     public bool IsFiring()
