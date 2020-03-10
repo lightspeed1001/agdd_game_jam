@@ -15,7 +15,9 @@
 
     public string GetPerson()
     {
-        return talker;
+        if (!string.IsNullOrEmpty(talker))
+            return talker;
+        return "Uknown";
     }
 
     public string GetText()
