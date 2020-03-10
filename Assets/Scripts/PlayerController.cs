@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Damageable damageableComponent;
     private Rigidbody2D rb;
     private bool usingGamepad = false;
+    public DialogueRange interactable = null;
 
     void Start()
     {
@@ -52,7 +53,17 @@ public class PlayerController : MonoBehaviour
                 // TODO Fire in the direction the player is facing using a raycast probably
                 // If the player hit something, try to get the damageable component and damage it
             }
+
+            if (Input.GetButtonDown("Interact"))
+                Interact();
         }
+    }
+
+    public void Interact()
+    {
+        if (interactable == null)
+            return;
+        interactable.Interact();
     }
 
     private Vector2 GetMovementVector()

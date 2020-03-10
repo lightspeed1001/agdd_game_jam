@@ -37,6 +37,9 @@ public class DialogueController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("Interact") && GameManager.instance.talking) // Avoid 1-frame conversations.
+            Choose();
+
         if (dial == null)
         {
             HideBox();
@@ -57,9 +60,6 @@ public class DialogueController : MonoBehaviour
             if (move > 0)
                 NextChoice();
         }
-
-        if (Input.GetButtonDown("Interact"))
-            Choose();
     }
 
     private int GetMovement()

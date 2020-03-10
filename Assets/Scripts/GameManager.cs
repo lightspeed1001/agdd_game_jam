@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool talking = false;
     public bool paused = false;
+    public DialogueController dialogueController;
 
     // Start is called before the first frame update
     void Awake()
@@ -18,6 +19,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void InsertConversation(Dialogue conversation)
+    {
+        dialogueController.InsertDialogue(conversation);
     }
 
     public bool IsFrozen()
