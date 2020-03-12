@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public DialogueRange interactable = null;
 
     private Vector2 movement;
-    private Vector2 mousePosition;
+    private Vector2 lookVector;
     private Camera cam;
 
     void Start()
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
             Vector2 movementVector = GetMovementVector();
             movementVector *= moveSpeed;
             movement = movementVector;
-            mousePosition = GetFacingVector();
+            lookVector = GetFacingVector();
             // rb.velocity = movementVector;
             
             // TODO update player facing
@@ -77,9 +77,9 @@ public class PlayerController : MonoBehaviour
     {
         // rb.velocity = movement;
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
-        if(mousePosition != Vector2.zero)
+        if(lookVector != Vector2.zero)
         {
-            float angle = GetFacingRotation(mousePosition);
+            float angle = GetFacingRotation(lookVector);
             rb.rotation = angle;
         }
     }
@@ -108,7 +108,6 @@ public class PlayerController : MonoBehaviour
             Vector2 rotation = Vector2.zero;
             rotation.x = Input.GetAxis("AimHorizontal");
             rotation.y = Input.GetAxis("AimVertical");
-            Debug.Log(rotation);
             return rotation;
         }
         else
@@ -121,12 +120,12 @@ public class PlayerController : MonoBehaviour
     {
         if(usingGamepad)
         {
-            float angle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(lookVector.x, lookVector.y) * Mathf.Rad2Deg;
             return angle;
         }
         else
         {
-            Vector2 lookDirection = mousePosition - rb.position;
+            Vector2 lookDirection = lookVector - rb.position;
             float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg + 90f;
             return angle;
         }

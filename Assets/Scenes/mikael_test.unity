@@ -121,36 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &793311083
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 793311084}
-  m_Layer: 0
-  m_Name: FirePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &793311084
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793311083}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.1028, y: -0.341, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1532632565}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1001 &978972569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250,31 +220,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6c4e39ad106f0d43a6f40684349f754, type: 3}
---- !u!1 &1275389478 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4327396416235217888, guid: 645b552b0ab50934c95dfe689959d4c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 4327396415501240015}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1275389479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275389478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c907bc2fa3476ab41aeb187f08ff530d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthDamage: 50
-  shieldDamage: 0
-  armorDamage: 0
-  initialForce: 25
-  bulletPrefab: {fileID: 8941053553149222546, guid: b2578370116825f4794f8d2ccc249241,
-    type: 3}
-  firePoint: {fileID: 793311084}
 --- !u!1 &1499973324
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,31 +431,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327396416235217915, guid: 645b552b0ab50934c95dfe689959d4c2,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327396416235217915, guid: 645b552b0ab50934c95dfe689959d4c2,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327396416235217917, guid: 645b552b0ab50934c95dfe689959d4c2,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327396416235217917, guid: 645b552b0ab50934c95dfe689959d4c2,
-        type: 3}
-      propertyPath: gun
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327396416235217917, guid: 645b552b0ab50934c95dfe689959d4c2,
-        type: 3}
-      propertyPath: usingGamepad
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 645b552b0ab50934c95dfe689959d4c2, type: 3}
