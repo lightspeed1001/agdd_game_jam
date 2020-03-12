@@ -48,10 +48,13 @@ public class Damageable : MonoBehaviour
     {
         health -= damage;
         OnDamageTaken.Invoke();
+        Debug.Log("I took damage!");
         if(health <= 0)
         {
+            Debug.Log("I died!");
             OnDeath.Invoke();
-            LiterallyAnythingDied.Invoke();
+            if(LiterallyAnythingDied != null)
+                LiterallyAnythingDied.Invoke();
         }
     }
 }

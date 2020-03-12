@@ -7,11 +7,17 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float timeBetweenShots = 0.2f;
 
+    private Gun gun;
+
     private float timeSinceLastShot = 0.0f;
     private Damageable damageableComponent;
     private Rigidbody2D rb;
-    private bool usingGamepad = false;
+    private bool usingGamepad = true;
     public DialogueRange interactable = null;
+
+    private Vector2 movement;
+    private Vector2 mousePosition;
+    private Camera cam;
 
     void Start()
     {
@@ -25,6 +31,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         damageableComponent = GetComponent<Damageable>();
+        gun = GetComponent<Gun>();
+        cam = Camera.main;
     }
 
     private void RegisterEvents()
@@ -40,7 +48,9 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 movementVector = GetMovementVector();
             movementVector *= moveSpeed;
-            rb.velocity = movementVector;
+            movement = movementVector;
+            mousePosition = GetFacingVector();
+            // rb.velocity = movementVector;
             
             // TODO update player facing
 
@@ -49,6 +59,7 @@ public class PlayerController : MonoBehaviour
             {
                 timeSinceLastShot = 0.0f;
                 Debug.Log("Donkey!");
+                gun?.Fire();
                 // Shooty mechanics here.
                 // TODO Fire in the direction the player is facing using a raycast probably
                 // If the player hit something, try to get the damageable component and damage it
@@ -56,6 +67,20 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("Interact"))
                 Interact();
+        }
+    }
+
+    /// <summary>
+    /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void FixedUpdate()
+    {
+        // rb.velocity = movement;
+        rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+        if(mousePosition != Vector2.zero)
+        {
+            float angle = GetFacingRotation(mousePosition);
+            rb.rotation = angle;
         }
     }
 
@@ -80,12 +105,31 @@ public class PlayerController : MonoBehaviour
         if(usingGamepad)
         {
             // TODO Make an input axis for this when using a controller
+            Vector2 rotation = Vector2.zero;
+            rotation.x = Input.GetAxis("AimHorizontal");
+            rotation.y = Input.GetAxis("AimVertical");
+            Debug.Log(rotation);
+            return rotation;
         }
         else
         {
-            // TODO Get mouse position and update facing from that
+            return cam.ScreenToWorldPoint(Input.mousePosition);
         }
-        return Vector2.zero;
+    }
+
+    private float GetFacingRotation(Vector2 direction)
+    {
+        if(usingGamepad)
+        {
+            float angle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
+            return angle;
+        }
+        else
+        {
+            Vector2 lookDirection = mousePosition - rb.position;
+            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg + 90f;
+            return angle;
+        }
     }
 
     public bool IsFiring()
