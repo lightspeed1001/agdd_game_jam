@@ -235,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talking: 0
   paused: 0
+  dialogueController: {fileID: 0}
 --- !u!4 &1499973326
 Transform:
   m_ObjectHideFlags: 0
@@ -319,12 +320,12 @@ PrefabInstance:
     - target: {fileID: 4327396416235217915, guid: 645b552b0ab50934c95dfe689959d4c2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4327396416235217915, guid: 645b552b0ab50934c95dfe689959d4c2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 645b552b0ab50934c95dfe689959d4c2, type: 3}
