@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
                 Interact();
         }
+        else
+            movement = Vector2.zero; // Stops the player if something freezes the game.
     }
 
     /// <summary>
