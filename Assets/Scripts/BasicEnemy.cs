@@ -40,12 +40,12 @@ public class BasicEnemy : MonoBehaviour
     }
     private void OnDeath()
     {
-        // Player died, do something?
+        // Enemy died, do something?
     }
 
     private void OnDamageTaken()
     {
-        // Player took damage, do something?
+        // Enemy took damage, do something?
     }
 
     /// <summary>

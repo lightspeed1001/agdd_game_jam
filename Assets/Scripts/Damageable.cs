@@ -53,8 +53,8 @@ public class Damageable : MonoBehaviour
         {
             Debug.Log("I died!");
             OnDeath.Invoke();
-            if(LiterallyAnythingDied != null)
-                LiterallyAnythingDied.Invoke();
+            // if(LiterallyAnythingDied != null)
+                LiterallyAnythingDied?.Invoke();
         }
     }
 }

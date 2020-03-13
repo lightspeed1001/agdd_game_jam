@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+    public float maxMoveSpeed = 5f;
+    public float lowerMoveSpeedCap = 0.4f;
+    public float shootingStaminaCost = 1;
+    public DialogueRange interactable = null;
     public float timeBetweenShots = 0.2f;
 
-    private Gun gun;
-
+    private float moveSpeed;
     private float timeSinceLastShot = 0.0f;
-    private Damageable damageableComponent;
-    private Rigidbody2D rb;
-    private bool usingGamepad = true;
-    public DialogueRange interactable = null;
+    private bool usingGamepad = false;
 
     private Vector2 movement;
     private Vector2 lookVector;
+
     private Camera cam;
+    private Gun gun;
+    private Damageable damageableComponent;
+    private Rigidbody2D rb;
+    private StaminaGauge staminaComponent;
 
     void Start()
     {
         timeSinceLastShot = timeBetweenShots;
-
+        moveSpeed = maxMoveSpeed;
         RegisterComponents();
         RegisterEvents();
     }
@@ -32,6 +36,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         damageableComponent = GetComponent<Damageable>();
         gun = GetComponent<Gun>();
+        staminaComponent = GetComponent<StaminaGauge>();
         cam = Camera.main;
     }
 
@@ -39,6 +44,8 @@ public class PlayerController : MonoBehaviour
     {
         damageableComponent.OnDamageTaken += OnDamageTaken;
         damageableComponent.OnDeath       += OnDeath;
+        staminaComponent.OnGainStamina += UpdateMovementSpeed;
+        staminaComponent.OnLoseStamina += UpdateMovementSpeed;
     }
 
     // Update is called once per frame
@@ -58,8 +65,9 @@ public class PlayerController : MonoBehaviour
             if (IsFiring() &&  timeSinceLastShot >= timeBetweenShots)
             {
                 timeSinceLastShot = 0.0f;
-                Debug.Log("Donkey!");
                 gun?.Fire();
+                staminaComponent?.DrainStamina(shootingStaminaCost);
+                
                 // Shooty mechanics here.
                 // TODO Fire in the direction the player is facing using a raycast probably
                 // If the player hit something, try to get the damageable component and damage it
@@ -68,6 +76,14 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
                 Interact();
         }
+    }
+
+    private void UpdateMovementSpeed()
+    {
+        float staminaPerc = staminaComponent.Stamina / staminaComponent.maxStamina;
+        staminaPerc = Mathf.Max(0.4f, staminaPerc);
+        moveSpeed = maxMoveSpeed * staminaPerc;
+        // Debug.Log(moveSpeed);
     }
 
     /// <summary>

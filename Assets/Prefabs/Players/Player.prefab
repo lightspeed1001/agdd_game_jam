@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 1541152997495200347}
   - component: {fileID: 161942700}
   - component: {fileID: 1275389479}
+  - component: {fileID: 6389766230632328189}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -130,9 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf57484830be47f408de60413aae4d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  timeBetweenShots: 0.2
+  maxMoveSpeed: 5
+  lowerMoveSpeedCap: 0.4
+  shootingStaminaCost: 5
   interactable: {fileID: 0}
+  timeBetweenShots: 0.2
 --- !u!50 &4327396416235217918
 Rigidbody2D:
   serializedVersion: 4
@@ -223,3 +226,18 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8941053553149222546, guid: b2578370116825f4794f8d2ccc249241,
     type: 3}
   firePoint: {fileID: 793311084}
+--- !u!114 &6389766230632328189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4327396416235217888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f448c127da3a641bcc388f44eea413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 100
+  staminaRegen: 0.1
+  regenDelay: 2

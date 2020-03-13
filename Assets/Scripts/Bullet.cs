@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
 {
     public Gun parent;
 
+    // TODO add a constructor that sets all the correct variables for this bullet
+
     /// <summary>
     /// Sent when an incoming collider makes contact with this object's
     /// collider (2D physics only).

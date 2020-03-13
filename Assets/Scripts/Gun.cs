@@ -13,6 +13,9 @@ public class Gun : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(firePoint.up * initialForce, ForceMode2D.Impulse);
+        // TODO instead of having the prefab include a bullet component, add the component here.
+        // That way, we can have different bullet types.
+        // Also, each gun subclass should override this function
         bullet.GetComponent<Bullet>().parent = this;
     }
 }
