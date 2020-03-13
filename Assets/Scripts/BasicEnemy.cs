@@ -19,6 +19,7 @@ public class BasicEnemy : MonoBehaviour
         agent.updateUpAxis = false;
         RegisterComponents();
         RegisterEvents();
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
     private void RegisterComponents()
