@@ -13,8 +13,8 @@ public class DialogueRange : MonoBehaviour
         conversation = new Dialogue(
             "You",
             "The experiment was a success!",
-            new string[] {"Alright", "Good News!", "Sucks"},
-            new Dialogue[] {null, null, null}
+            new List<string> {"Alright", "Good News!", "Sucks"},
+            new List<int> {-1, -1, -1}
         );
     }
 

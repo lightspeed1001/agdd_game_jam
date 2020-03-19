@@ -1,11 +1,17 @@
-﻿public class Dialogue
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+[Serializable]
+public class Dialogue
 {
-    string talker;
-    string dialogue;
-    string[] choices;
-    Dialogue[] consequences;
+    public string talker {get; set;}
+    public string dialogue {get; set;}
+    public List<string> choices {get; set;}
+    public List<int> consequences {get; set;}
     
-    public Dialogue(string person, string text, string[] options, Dialogue[] links)
+    public Dialogue(string person, string text, List<string> options, List<int> links)
     {
         talker = person;
         dialogue = text;
@@ -25,12 +31,12 @@
         return dialogue;
     }
 
-    public string[] GetChoices()
+    public List<string> GetChoices()
     {
         return choices;
     }
 
-    public Dialogue MakeChoice(int index)
+    public int MakeChoice(int index)
     {
         return consequences[index];
     }

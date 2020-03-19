@@ -12,6 +12,7 @@ public class DialogueController : MonoBehaviour
     private ChoiceBox[] options;
     private int choiceIndex = 0;
     private bool buttonStillDown = false;
+    private DialogueRepo repo;
 
     void Start()
     {
@@ -23,16 +24,11 @@ public class DialogueController : MonoBehaviour
         Dialogue talk = new Dialogue(
             "You",
             "\"Something\"",
-            new string[] {"Continue", "Cancel"},
-            new Dialogue[] {
-                new Dialogue("Still You",
-                    "\"More something\"",
-                    new string[] {"Exit"},
-                    new Dialogue[] {null}),
-                null,
-            }
+            new List<string> {"Continue", "Cancel"},
+            new List<int> {-1, -1}
         );
-        InsertDialogue(talk);
+        repo = GetComponent<DialogueRepo>();
+        InsertDialogue(repo.GetDialogue(0));
     }
 
     void Update()
@@ -85,7 +81,7 @@ public class DialogueController : MonoBehaviour
 
     private void Choose()
     {
-        dial = dial.MakeChoice(choiceIndex);
+        dial = repo.GetDialogue(dial.MakeChoice(choiceIndex));
         if (dial != null)
             UpdateDialogue();
         NewChoice(0);
@@ -110,16 +106,16 @@ public class DialogueController : MonoBehaviour
 
     private void UpdateChoices()
     {
-        for (int i = 0; i < dial.GetChoices().Length; i++)
+        for (int i = 0; i < dial.GetChoices().Count; i++)
             options[i].SetText(dial.GetChoices()[i]); // Put available choices into place.
-        for (int i = dial.GetChoices().Length; i < options.Length; i++)
+        for (int i = dial.GetChoices().Count; i < options.Length; i++)
             options[i].SetText(""); // Hide unavailable choices.
     }
 
     private void NextChoice()
     {
         int newIndex = choiceIndex;
-        if (newIndex + 1 == dial.GetChoices().Length)
+        if (newIndex + 1 == dial.GetChoices().Count)
             newIndex = -1;
         newIndex++;
         NewChoice(newIndex);
@@ -129,7 +125,7 @@ public class DialogueController : MonoBehaviour
     {
         int newIndex = choiceIndex;
         if (newIndex == 0)
-            newIndex = dial.GetChoices().Length;
+            newIndex = dial.GetChoices().Count;
         newIndex--;
         NewChoice(newIndex);
     }
