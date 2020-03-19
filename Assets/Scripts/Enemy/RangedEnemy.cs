@@ -13,7 +13,8 @@ public class RangedEnemy : BasicEnemy
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!target)
+            target = GameManager.instance.Player.transform;
     }
 
     private bool CanFire()
@@ -21,7 +22,6 @@ public class RangedEnemy : BasicEnemy
         timeSinceFiring += Time.deltaTime;
         if (timeSinceFiring < fireRate)
             return false;
-        timeSinceFiring = 0.0f;
         return true;
     }
 
@@ -62,6 +62,9 @@ public class RangedEnemy : BasicEnemy
 
         Vector3 direction = (target.position - transform.position).normalized;
         if (CanSeeTarget())
+        {
             gun.Fire(direction);
+            timeSinceFiring = 0.0f;
+        }
     }
 }

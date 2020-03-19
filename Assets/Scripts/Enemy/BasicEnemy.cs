@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class BasicEnemy : MonoBehaviour
 {
     private Damageable damageableComponent;
-    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +21,16 @@ public class BasicEnemy : MonoBehaviour
 
     private void RegisterComponents()
     {
-        rb = GetComponent<Rigidbody2D>();
         damageableComponent = GetComponent<Damageable>();
     }
 
     private void RegisterEvents()
     {
-        damageableComponent.OnDamageTaken += OnDamageTaken;
-        damageableComponent.OnDeath       += OnDeath;
+        if(damageableComponent)
+        {
+            damageableComponent.OnDamageTaken += OnDamageTaken;
+            damageableComponent.OnDeath       += OnDeath;
+        }
     }
 
     // Update is called once per frame

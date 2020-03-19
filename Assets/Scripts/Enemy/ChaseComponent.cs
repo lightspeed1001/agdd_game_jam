@@ -5,6 +5,14 @@ using UnityEngine;
 public class ChaseComponent : NavigationComponent
 {
     public Transform chaseTarget;
+
+    protected override void Start()
+    {
+        base.Start();
+        if(!chaseTarget)
+            chaseTarget = GameManager.instance.Player.transform;
+    }
+
     // Update is called once per frame
     protected override void Update()
     {

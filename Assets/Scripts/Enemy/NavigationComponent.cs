@@ -10,18 +10,13 @@ public class NavigationComponent : MonoBehaviour
     private Rigidbody2D rb;
     private NavMeshAgent agent;
 
-    protected virtual void Awake()
+    // Start is called before the first frame update
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
