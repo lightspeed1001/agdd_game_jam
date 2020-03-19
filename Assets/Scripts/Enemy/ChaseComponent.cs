@@ -6,9 +6,9 @@ public class ChaseComponent : NavigationComponent
 {
     public Transform chaseTarget;
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         destination = chaseTarget.position;
-        base.DoSomething();
+        base.Update();
     }
 }

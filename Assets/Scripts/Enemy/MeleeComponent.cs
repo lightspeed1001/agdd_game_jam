@@ -2,20 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeComponent : MonoBehaviour, IEnemyComponent
+public class MeleeComponent : MonoBehaviour
 {
-    public void DoSomething()
-    {
-    }
-
-    public void OnDeath()
-    {
-    }
-
-    public void OnWakeup()
-    {
-    }
-
     // Start is called before the first frame update
     void Start()
     {
