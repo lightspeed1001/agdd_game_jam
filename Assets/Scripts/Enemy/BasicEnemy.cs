@@ -6,18 +6,12 @@ using UnityEngine.AI;
 public class BasicEnemy : MonoBehaviour
 {
     private Damageable damageableComponent;
-    private Rigidbody2D rb;
-    private List<IEnemyComponent> enemyComponents;
 
     // Start is called before the first frame update
     void Start()
     {
         RegisterComponents();
         RegisterEvents();
-        foreach (var comp in enemyComponents)
-        {
-            comp.OnWakeup();
-        }
         //player = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
@@ -27,16 +21,16 @@ public class BasicEnemy : MonoBehaviour
 
     private void RegisterComponents()
     {
-        rb = GetComponent<Rigidbody2D>();
         damageableComponent = GetComponent<Damageable>();
-        enemyComponents = new List<IEnemyComponent>();
-        enemyComponents.AddRange(GetComponents<IEnemyComponent>());
     }
 
     private void RegisterEvents()
     {
-        damageableComponent.OnDamageTaken += OnDamageTaken;
-        damageableComponent.OnDeath       += OnDeath;
+        if(damageableComponent)
+        {
+            damageableComponent.OnDamageTaken += OnDamageTaken;
+            damageableComponent.OnDeath       += OnDeath;
+        }
     }
 
     // Update is called once per frame
@@ -47,10 +41,6 @@ public class BasicEnemy : MonoBehaviour
     private void OnDeath()
     {
         // Enemy died, do something?
-        foreach (var comp in enemyComponents)
-        {
-            comp.OnDeath();
-        }
         Destroy(gameObject);
     }
 

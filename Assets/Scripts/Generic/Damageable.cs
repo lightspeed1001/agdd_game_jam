@@ -47,10 +47,10 @@ public class Damageable : MonoBehaviour
     public void TakeDamage(int damage, float healthModifier = 1.0f, float shieldModifier = 1.0f, float armorModifier = 1.0f)
     {
         health -= damage;
-        OnDamageTaken.Invoke();
+        OnDamageTaken?.Invoke();
         if(health <= 0)
         {
-            OnDeath.Invoke();
+            OnDeath?.Invoke();
             LiterallyAnythingDied?.Invoke();
         }
     }
