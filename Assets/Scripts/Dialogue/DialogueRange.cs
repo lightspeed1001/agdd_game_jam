@@ -5,17 +5,11 @@ using UnityEngine;
 public class DialogueRange : MonoBehaviour
 {
     public GameObject interactIndicator;
-    public Dialogue conversation = null;
+    public int conversationIndex = -1;
 
     void Start()
     {
         interactIndicator.SetActive(false);
-        conversation = new Dialogue(
-            "You",
-            "The experiment was a success!",
-            new List<string> {"Alright", "Good News!", "Sucks"},
-            new List<int> {-1, -1, -1}
-        );
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -37,6 +31,6 @@ public class DialogueRange : MonoBehaviour
     }
     public void Interact()
     {
-        GameManager.instance.InsertConversation(conversation);
+        GameManager.instance.InsertConversation(conversationIndex);
     }
 }

@@ -20,15 +20,9 @@ public class DialogueController : MonoBehaviour
         for (int i = 0; i < choices.Length; i++)
             options[i] = choices[i].GetComponent<ChoiceBox>();
         options[0].Choose();
-
-        Dialogue talk = new Dialogue(
-            "You",
-            "\"Something\"",
-            new List<string> {"Continue", "Cancel"},
-            new List<int> {-1, -1}
-        );
+        
         repo = GetComponent<DialogueRepo>();
-        InsertDialogue(repo.GetDialogue(0));
+        InsertDialogue(0);
     }
 
     void Update()
@@ -49,13 +43,10 @@ public class DialogueController : MonoBehaviour
         }
 
         int move = GetMovement();
-        if (move != 0)
-        {
-            if (move < 0)
-                PrevChoice();
-            if (move > 0)
-                NextChoice();
-        }
+        if (move < 0)
+            PrevChoice();
+        if (move > 0)
+            NextChoice();
     }
 
     private int GetMovement()
@@ -73,9 +64,9 @@ public class DialogueController : MonoBehaviour
         return toRet;
     }
 
-    public void InsertDialogue(Dialogue newDialogue)
+    public void InsertDialogue(int index)
     {
-        dial = newDialogue;
+        dial = repo.GetDialogue(index);
         UpdateDialogue();
     }
 

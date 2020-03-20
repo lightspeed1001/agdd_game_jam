@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void InsertConversation(Dialogue conversation)
+    public void InsertConversation(int conversationIndex)
     {
-        dialogueController.InsertDialogue(conversation);
+        dialogueController.InsertDialogue(conversationIndex);
     }
 
     public bool IsFrozen()
