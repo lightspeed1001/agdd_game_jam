@@ -8,7 +8,7 @@ public class NavigationComponent : MonoBehaviour
     [HideInInspector]
     public Vector3 destination;
     private Rigidbody2D rb;
-    private NavMeshAgent agent;
+    protected NavMeshAgent agent;
 
     // Start is called before the first frame update
     protected virtual void Start()

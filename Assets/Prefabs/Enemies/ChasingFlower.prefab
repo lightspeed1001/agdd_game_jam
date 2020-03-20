@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 315110690232389482}
   - component: {fileID: 8886607408064715228}
   - component: {fileID: 1870782431053968513}
-  - component: {fileID: 1773840134}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -132,19 +131,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1773840134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3416076459888920412}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ea73e3beb458e1409076322c2043828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotation_speed: 40
 --- !u!1 &6168891007661764536
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +144,6 @@ GameObject:
   - component: {fileID: 2362041256230756558}
   - component: {fileID: 7825542501946083713}
   - component: {fileID: 386489161}
-  - component: {fileID: 386489162}
   - component: {fileID: 386489156}
   - component: {fileID: 1942870888735728782}
   - component: {fileID: 5154030900485232228}
@@ -201,6 +186,9 @@ MonoBehaviour:
   maxHealth: 100
   maxArmor: 0
   maxShield: 0
+  health: 0
+  armor: 0
+  shield: 0
 --- !u!114 &2362041256230756558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,22 +238,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &386489162
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6168891007661764536}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.81
 --- !u!195 &386489156
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -337,3 +309,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {x: 0, y: 0, z: 0}
   chaseTarget: {fileID: 0}
+  maxRoamRange: 100

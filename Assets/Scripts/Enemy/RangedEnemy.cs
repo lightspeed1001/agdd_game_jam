@@ -42,7 +42,7 @@ public class RangedEnemy : BasicEnemy
         {
             RaycastHit2D sightTest = sightTestResults[i];
             // Debug.Log(string.Format("Tag: {0}; i: {1}", sightTest.transform.gameObject.tag, i));
-            if (sightTest.transform.gameObject.CompareTag("Enemy"))
+            if (sightTest.transform.gameObject.CompareTag("Enemy") || sightTest.transform.gameObject.CompareTag("EnemySightIgnore"))
                 continue;
             if (sightTest.transform.gameObject.CompareTag("Player"))
             {
@@ -61,7 +61,7 @@ public class RangedEnemy : BasicEnemy
             return;
 
         Vector3 direction = (target.position - transform.position).normalized;
-        if (CanSeeTarget())
+        if (EnemyFunctions.CanSeeTarget(transform, target, "Player", maxRange))//  CanSeeTarget())
         {
             gun.Fire(direction);
             timeSinceFiring = 0.0f;

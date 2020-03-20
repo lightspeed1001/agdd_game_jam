@@ -113,6 +113,8 @@ GameObject:
   - component: {fileID: 6168891007661764543}
   - component: {fileID: 843048568696521780}
   - component: {fileID: 8236744317932570279}
+  - component: {fileID: 819035230372895580}
+  - component: {fileID: 7697879887142398954}
   m_Layer: 0
   m_Name: Spawn1
   m_TagString: Untagged
@@ -151,6 +153,9 @@ MonoBehaviour:
   maxHealth: 1000
   maxArmor: 0
   maxShield: 0
+  health: 0
+  armor: 0
+  shield: 0
 --- !u!70 &843048568696521780
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -185,6 +190,34 @@ MonoBehaviour:
   minTimeBetweenSpawns: 2
   maxTimeBetweenSpawns: 5
   numSpawns: 100
+--- !u!208 &819035230372895580
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6168891007661764536}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &7697879887142398954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6168891007661764536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac14ac6e6760953409e7a2080d957e3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8483746638075154926
 GameObject:
   m_ObjectHideFlags: 0

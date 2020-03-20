@@ -158,7 +158,6 @@ GameObject:
   - component: {fileID: 2362041256230756558}
   - component: {fileID: 7825542501946083713}
   - component: {fileID: 386489161}
-  - component: {fileID: 386489162}
   - component: {fileID: 1942870888735728782}
   - component: {fileID: 5154030900485232228}
   m_Layer: 8
@@ -199,6 +198,9 @@ MonoBehaviour:
   maxHealth: 100
   maxArmor: 0
   maxShield: 0
+  health: 0
+  armor: 0
+  shield: 0
 --- !u!114 &2362041256230756558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,22 +250,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!58 &386489162
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6168891007661764536}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.81
 --- !u!114 &1942870888735728782
 MonoBehaviour:
   m_ObjectHideFlags: 0

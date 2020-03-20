@@ -5,6 +5,9 @@ using UnityEngine;
 public class ChaseComponent : NavigationComponent
 {
     public Transform chaseTarget;
+    public float maxRoamRange = 10;
+
+    private Vector3 lastSeen;
 
     protected override void Start()
     {
@@ -16,7 +19,16 @@ public class ChaseComponent : NavigationComponent
     // Update is called once per frame
     protected override void Update()
     {
-        destination = chaseTarget.position;
+        if(EnemyFunctions.CanSeeTarget(transform, chaseTarget, "Player", 100))
+            destination = chaseTarget.position;
+        else
+        {
+            Vector2 moveDirection = agent.velocity.normalized;
+            if (moveDirection == Vector2.zero || agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid)
+            {
+                destination = EnemyFunctions.RandomNavSphere(transform.position, maxRoamRange, -1);
+            }
+        }
         base.Update();
     }
 }
