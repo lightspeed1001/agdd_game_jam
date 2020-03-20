@@ -6,11 +6,11 @@ using System;
 [Serializable]
 public class Dialogue
 {
-    public string talker;// {get; set;}
-    public string dialogue;// {get; set;}
-    public List<string> choices;// {get; set;}
-    public List<int> consequences;// {get; set;}
-
+    public string talker;
+    public string dialogue;
+    public List<string> choices;
+    public List<int> consequences;
+    
     public Dialogue(string person, string text, List<string> options, List<int> links)
     {
         talker = person;
@@ -21,9 +21,9 @@ public class Dialogue
 
     public string GetPerson()
     {
-        if (!string.IsNullOrEmpty(talker))
-            return talker;
-        return "Uknown";
+        if (string.IsNullOrEmpty(talker))
+            return "Unknown";
+        return talker;
     }
 
     public string GetText()

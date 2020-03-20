@@ -5,16 +5,13 @@ using UnityEngine;
 public class DialogueRepo : MonoBehaviour
 {
     public TextAsset dialogueFile;
-    private Dialogue dialogue;
+    private DialogueList dialogues;
 
     // Start is called before the first frame update
     void Awake()
     {
         string s = dialogueFile.ToString();
-        print(s);
-        dialogue = JsonUtility.FromJson<Dialogue>(s);
-        print(dialogue.GetPerson());
-        print(JsonUtility.ToJson(dialogue));
+        dialogues = JsonUtility.FromJson<DialogueList>(s);
     }
 
     // Update is called once per frame
@@ -25,9 +22,6 @@ public class DialogueRepo : MonoBehaviour
 
     public Dialogue GetDialogue(int index)
     {
-        //if (index == -1 || index >= dialogue.Length)
-        //    return null;
-        //return dialogue[index];
-        return dialogue;
+        return dialogues.GetDialogue(index);
     }
 }

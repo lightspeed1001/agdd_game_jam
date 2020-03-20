@@ -1,22 +1,24 @@
 {
-    "0": {
-        "talker": "Old Man",
-        "dialogue": "Those damn fae, strutting about like they own the place.",
-        "choices": [
-            "Who?",
-            "Goodbye."
-        ],
-        "consequences": [
-            -1,
-            1
-        ]
-    },
-    "1": {
-        "talker": "Me",
-        "dialogue": "something",
-        "choices": [
-            "fuck off"
-        ],
-        "consequences": [-1]
-    }
+    "list": [
+        {
+            "talker": "Old Man",
+            "dialogue": "Those damn fae, strutting about like they own the place.",
+            "choices": [
+                "Who?",
+                "Goodbye."
+            ],
+            "consequences": [
+                1,
+                -1
+            ]
+        },
+        {
+            "talker": "Me",
+            "dialogue": "something",
+            "choices": [
+                "fuck off"
+            ],
+            "consequences": [-1]
+        }
+    ]
 }

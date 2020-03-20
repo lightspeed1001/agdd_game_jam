@@ -22,14 +22,13 @@ public class GameManager : MonoBehaviour
     {
     }
 
-    public void InsertConversation(Dialogue conversation)
+    public void InsertConversation(int conversationIndex)
     {
-        dialogueController.InsertDialogue(conversation);
+        dialogueController.InsertDialogue(conversationIndex);
     }
 
     public bool IsFrozen()
     {
         return paused || talking;
     }
-
 }
