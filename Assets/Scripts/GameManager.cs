@@ -8,18 +8,18 @@ public class GameManager : MonoBehaviour
     public bool talking = false;
     public bool paused = false;
     public DialogueController dialogueController;
-    private GameObject player;
+    public GameObject Player { get; private set; }
 
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void InsertConversation(Dialogue conversation)
@@ -32,8 +32,4 @@ public class GameManager : MonoBehaviour
         return paused || talking;
     }
 
-    public GameObject Player
-    {
-        get { return player; }
-    }
 }

@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
     public float maxMoveSpeed = 5f;
     public float lowerMoveSpeedCap = 0.4f;
     public float shootingStaminaCost = 1;
-    public DialogueRange interactable = null;
+    public Interactable interactable = null;
     public float timeBetweenShots = 0.2f;
+    public GameObject healthBar;
 
     private float moveSpeed;
     private float timeSinceLastShot = 0.0f;
@@ -73,11 +74,21 @@ public class PlayerController : MonoBehaviour
                 // If the player hit something, try to get the damageable component and damage it
             }
 
+            if(healthBar)
+            {
+                healthBar.transform.localScale = new Vector3(GetHealthPercentage(), healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+            }
+
             if (Input.GetButtonDown("Interact"))
                 Interact();
         }
         else
             movement = Vector2.zero; // Stops the player if something freezes the game.
+    }
+
+    private float GetHealthPercentage()
+    {
+        return damageableComponent.health / damageableComponent.maxHealth;
     }
 
     private void UpdateMovementSpeed()

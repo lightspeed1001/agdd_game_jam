@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueRange : MonoBehaviour
+public class DialogueRange : Interactable
 {
-    public GameObject interactIndicator;
     public Dialogue conversation = null;
 
     void Start()
@@ -18,24 +17,7 @@ public class DialogueRange : MonoBehaviour
         );
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        PlayerController PC = other.GetComponentInParent<PlayerController>();
-        if (PC == null)
-            return;
-        PC.interactable = this;
-        interactIndicator.SetActive(true);
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        PlayerController PC = other.GetComponentInParent<PlayerController>();
-        if (PC == null)
-            return;
-        PC.interactable = null;
-        interactIndicator.SetActive(false);
-    }
-    public void Interact()
+    public override void Interact()
     {
         GameManager.instance.InsertConversation(conversation);
     }

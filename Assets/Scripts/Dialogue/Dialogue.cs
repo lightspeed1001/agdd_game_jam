@@ -6,11 +6,11 @@ using System;
 [Serializable]
 public class Dialogue
 {
-    public string talker {get; set;}
-    public string dialogue {get; set;}
-    public List<string> choices {get; set;}
-    public List<int> consequences {get; set;}
-    
+    public string talker;// {get; set;}
+    public string dialogue;// {get; set;}
+    public List<string> choices;// {get; set;}
+    public List<int> consequences;// {get; set;}
+
     public Dialogue(string person, string text, List<string> options, List<int> links)
     {
         talker = person;
