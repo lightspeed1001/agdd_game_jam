@@ -13,12 +13,64 @@
             ]
         },
         {
-            "talker": "Me",
-            "dialogue": "something",
+            "talker": "Old Man",
+            "dialogue": "You don't know who the fae are? I mean... FAE is an acronym, for the First American Empire. So the people from there are fae. You get me?",
             "choices": [
-                "fuck off"
+                "What's the First American Empire, then?"
             ],
-            "consequences": [-1]
+            "consequences": [
+                2
+            ]
+        },
+        {
+            "talker": "Old Man",
+            "dialogue": "Wait, seriously? I knew the education up here could be poor, but this poor? Alright... The FAE is a country that controls all of north and south America. Conquered it all 'bout a century ago. So just because their country's a little big, all of them think they're big shots.",
+            "choices": [
+                "Thanks, see you around, old timer."
+            ],
+            "consequences": [
+                -1
+            ]
+        },
+        {
+            "talker": "You",
+            "dialogue": "So where are you from, then?",
+            "choices": [
+                ""
+            ],
+            "consequences": [
+                4
+            ]
+        },
+        {
+            "talker": "Old Man",
+            "dialogue": "Well... I'm from a country called France... But it doesn't exist any longer, so there ain't much to say 'bout it.",
+            "choices": [
+                "You mean like it got conquered?"
+            ],
+            "consequences": [
+                5
+            ]
+        },
+        {
+            "talker": "Old Man",
+            "dialogue": "No. France, and practically all of Europe, got blown to kingdom come by those damn brits.",
+            "choices": [
+                ""
+            ],
+            "consequences": [
+                -1
+            ]
+        },
+        {
+            "talker": "This is a template",
+            "dialogue": "Never reference me.",
+            "choices": [
+                ""
+            ],
+            "consequences": [
+                -1
+            ]
         }
     ]
 }

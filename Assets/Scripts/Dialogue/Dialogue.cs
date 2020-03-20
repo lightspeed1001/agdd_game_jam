@@ -38,6 +38,13 @@ public class Dialogue
 
     public int MakeChoice(int index)
     {
-        return consequences[index];
+        try
+        {
+            return consequences[index];
+        }
+        catch
+        {
+            return -1;
+        }
     }
 }
