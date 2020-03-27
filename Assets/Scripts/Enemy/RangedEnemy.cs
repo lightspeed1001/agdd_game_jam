@@ -11,8 +11,9 @@ public class RangedEnemy : BasicEnemy
 
     private float timeSinceFiring = 0.0f;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         if (!target)
             target = GameManager.instance.Player.transform;
     }
@@ -25,34 +26,6 @@ public class RangedEnemy : BasicEnemy
         return true;
     }
 
-    private bool CanSeeTarget()
-    {
-        //precompute our ray settings
-        Vector3 start = transform.position;
-        Vector3 direction = (target.position - transform.position).normalized;
-
-        //draw the ray in the editor
-        Debug.DrawRay(start, direction * maxRange, Color.red);
-
-        //do the ray test
-        RaycastHit2D[] sightTestResults = Physics2D.RaycastAll(start, direction, maxRange);
-        bool canSeePlayer = false;
-        //now iterate over all results to work out what has happened
-        for (int i = 0; i < sightTestResults.Length; i++)
-        {
-            RaycastHit2D sightTest = sightTestResults[i];
-            // Debug.Log(string.Format("Tag: {0}; i: {1}", sightTest.transform.gameObject.tag, i));
-            if (sightTest.transform.gameObject.CompareTag("Enemy") || sightTest.transform.gameObject.CompareTag("EnemySightIgnore"))
-                continue;
-            if (sightTest.transform.gameObject.CompareTag("Player"))
-            {
-                canSeePlayer = true;
-            }
-            break;
-            //do stuff with this result? not sure exactly what your function needs though :)
-        }
-        return canSeePlayer;
-    }
 
     // Update is called once per frame
     void Update()

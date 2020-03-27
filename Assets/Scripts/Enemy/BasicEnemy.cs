@@ -8,23 +8,23 @@ public class BasicEnemy : MonoBehaviour
     private Damageable damageableComponent;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        RegisterComponents();
-        RegisterEvents();
         //player = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
+        RegisterComponents();
+        RegisterEvents();
     }
 
-    private void RegisterComponents()
+    protected virtual void RegisterComponents()
     {
         damageableComponent = GetComponent<Damageable>();
     }
 
-    private void RegisterEvents()
+    protected virtual void RegisterEvents()
     {
         if(damageableComponent)
         {
@@ -38,13 +38,14 @@ public class BasicEnemy : MonoBehaviour
     {
 
     }
-    private void OnDeath()
+
+    protected virtual void OnDeath()
     {
         // Enemy died, do something?
         Destroy(gameObject);
     }
 
-    private void OnDamageTaken()
+    protected virtual void OnDamageTaken()
     {
         // Enemy took damage, do something?
     }
@@ -52,7 +53,7 @@ public class BasicEnemy : MonoBehaviour
     /// <summary>
     /// This function is called when the MonoBehaviour will be destroyed.
     /// </summary>
-    void OnDestroy()
+    protected virtual void OnDestroy()
     {
         // For the love of god remember to unsubscribe from events
         if(damageableComponent)

@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : BasicEnemy
 {
     public GameObject enemyPrefab;
     public Transform spawnLocation;
     public float minTimeBetweenSpawns, maxTimeBetweenSpawns;
     public int numSpawns;
+    public bool dieWhenOutOfSpawns;
 
     private int spawnsRemaining;
     private float timeToSpawn = 0;
     private float timeSinceLastSpawn = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        spawnsRemaining = numSpawns;
-        SetTimeToSpawn();
-    }
+
 
     private void SetTimeToSpawn()
     {
@@ -43,6 +39,52 @@ public class EnemySpawner : MonoBehaviour
                 timeSinceLastSpawn = 0;
                 SetTimeToSpawn();
             }
+            if(spawnsRemaining == 0 && dieWhenOutOfSpawns) OnDeath();
+        }
+        else if(dieWhenOutOfSpawns)
+        {
+            OnDeath();
         }
     }
+
+    #region Overrides
+
+    // Start is called before the first frame update
+    protected override void Start()
+    {
+        base.Start();
+        spawnsRemaining = numSpawns;
+        SetTimeToSpawn();
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    protected override void OnDamageTaken()
+    {
+        base.OnDamageTaken();
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
+
+    protected override void RegisterComponents()
+    {
+        base.RegisterComponents();
+    }
+
+    protected override void RegisterEvents()
+    {
+        base.RegisterEvents();
+    }
+
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+    }
+    #endregion
 }
