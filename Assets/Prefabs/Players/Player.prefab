@@ -314,6 +314,9 @@ MonoBehaviour:
   maxHealth: 100
   maxArmor: 0
   maxShield: 0
+  health: 0
+  armor: 0
+  shield: 0
 --- !u!70 &1541152997495200347
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -346,7 +349,7 @@ MonoBehaviour:
   shieldDamage: 0
   armorDamage: 0
   initialForce: 25
-  bulletPrefab: {fileID: 8941053553149222546, guid: b2578370116825f4794f8d2ccc249241,
+  bulletPrefab: {fileID: 6717192039489239658, guid: 9e7ba4caefaaeb046a8d3092adbe862b,
     type: 3}
   firePoint: {fileID: 793311084}
 --- !u!114 &6389766230632328189
